@@ -7,13 +7,12 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>NB Air</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
 </head>
 <body>
 
     <main class="app-container">
         <header class="user-header" id="user-btn">
-            <span class="user-name" id="display-name">Inicia Sesión</span>
+            <span class="user-name" id="display-name">Inicia Sesion</span>
             <div class="user-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d1b3e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
             </div>
@@ -31,7 +30,7 @@
             <div class="card card-black">
                 <div class="drag-handle"></div>
                 <h2 class="card-title">Historial</h2>
-                <div class="empty-state"><p>No hay registros todavía</p></div>
+                <div class="empty-state"><p>No hay registros todavia</p></div>
             </div>
         </div>
     </main>
@@ -39,7 +38,7 @@
     <div id="login-modal" class="modal-overlay">
         <div class="modal-content">
             <h3>Inicia Sesión</h3>
-            <p>Accede a la app para que puedas usar todas las funciones</p>
+            <p>Accede a al app para que puedas usar todas las funciones de la aplicación</p>
             <div class="input-group">
                 <input type="email" id="email" placeholder="Correo Electrónico">
                 <input type="password" id="password" placeholder="Contraseña">
@@ -52,7 +51,7 @@
     </div>
 
     <div id="recarga-modal" class="modal-overlay">
-        <div class="modal-content recarga-content">
+        <div class="modal-content">
             <div class="visa-card">
                 <div class="visa-header">
                     <span>NBS Wallet</span>
@@ -61,16 +60,12 @@
                 <div class="visa-chip"></div>
                 <div class="visa-logo"></div>
             </div>
-
-            <div class="amount-selector">
-                <h2 id="temp-amount">$0</h2>
-                <div class="stepper">
-                    <button onclick="changeTempAmount(-10)">—</button>
-                    <div class="divider"></div>
-                    <button onclick="changeTempAmount(10)">+</button>
-                </div>
+            <h2 id="temp-amount" class="amount-text">$0</h2>
+            <div class="stepper">
+                <button onclick="changeTempAmount(-10)">—</button>
+                <div class="divider"></div>
+                <button onclick="changeTempAmount(10)">+</button>
             </div>
-
             <div class="modal-buttons">
                 <button class="btn-cancel" onclick="closeModal('recarga-modal')">Cancelar</button>
                 <button class="btn-continue btn-accept" onclick="applyRecarga()">Aceptar</button>
