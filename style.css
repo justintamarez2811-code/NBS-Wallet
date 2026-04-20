@@ -1,15 +1,14 @@
-/* Reset total */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
 }
 
 body {
     background-color: #ffffff;
     height: 100vh;
-    overflow: hidden; /* Evita scroll raro en el cel */
+    overflow: hidden;
 }
 
 .app-container {
@@ -18,18 +17,18 @@ body {
     height: 100vh;
 }
 
-/* Header */
+/* HEADER ARREGLADO - Nombre e Icono al lado */
 .user-header {
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 60px 30px 20px;
-    gap: 12px;
+    justify-content: flex-end; /* Todo a la derecha */
+    align-items: center;      /* Alineación vertical perfecta */
+    padding: 50px 25px 20px;
+    gap: 12px;                /* Espacio entre nombre e icono */
 }
 
-.user-info span {
-    font-size: 18px;
-    font-weight: 700;
+.user-name {
+    font-size: 19px;
+    font-weight: 800;
     color: #0d1b3e;
 }
 
@@ -37,15 +36,15 @@ body {
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    border: 2px solid #0d1b3e;
+    border: 2.5px solid #0d1b3e;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Saldo */
+/* SALDO */
 .balance-section {
-    padding: 20px 35px;
+    padding: 10px 30px;
 }
 
 .balance-section p {
@@ -58,7 +57,7 @@ body {
     font-size: 95px;
     font-weight: 900;
     letter-spacing: -4px;
-    margin: -10px 0 15px;
+    margin: -5px 0 15px;
 }
 
 .btn-recargar {
@@ -71,7 +70,7 @@ body {
     font-weight: 700;
 }
 
-/* Stack de Tarjetas */
+/* TARJETAS */
 .cards-stack {
     position: relative;
     margin-top: 40px;
@@ -82,9 +81,9 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    border-top-left-radius: 75px;
-    border-top-right-radius: 75px;
-    padding: 45px 40px;
+    border-top-left-radius: 70px;
+    border-top-right-radius: 70px;
+    padding: 40px 35px;
 }
 
 .card-title {
@@ -92,43 +91,35 @@ body {
     font-weight: 900;
 }
 
-/* Colores y Posiciones */
 .card-grey {
     background-color: #cccccc;
     top: 0;
-    color: #7a7a7a;
+    color: #888;
 }
 
 .card-blue {
     background-color: #0e043a;
-    top: 100px;
-    color: #5d568b; /* Color del texto "Acciones" */
+    top: 90px;
+    color: #5d568b;
 }
 
 .card-black {
     background-color: #000000;
-    top: 200px;
+    top: 180px;
     color: #ffffff;
-    display: flex;
-    flex-direction: column;
 }
 
-/* Handle y Historial */
 .drag-handle {
     width: 55px;
     height: 6px;
     background-color: #333;
     border-radius: 10px;
-    align-self: center;
-    margin-bottom: 30px;
+    margin: -10px auto 30px;
 }
 
 .empty-state {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #999;
+    margin-top: 120px;
+    text-align: center;
+    color: #888;
     font-size: 16px;
-    margin-top: 100px;
 }
