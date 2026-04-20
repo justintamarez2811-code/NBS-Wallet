@@ -17,13 +17,14 @@ body {
     height: 100vh;
 }
 
-/* HEADER ARREGLADO - Nombre e Icono al lado */
+/* Header */
 .user-header {
     display: flex;
-    justify-content: flex-end; /* Todo a la derecha */
-    align-items: center;      /* Alineación vertical perfecta */
-    padding: 50px 25px 20px;
-    gap: 12px;                /* Espacio entre nombre e icono */
+    justify-content: flex-end;
+    align-items: center;
+    padding: 60px 25px 20px;
+    gap: 12px;
+    cursor: pointer;
 }
 
 .user-name {
@@ -42,7 +43,7 @@ body {
     align-items: center;
 }
 
-/* SALDO */
+/* Saldo */
 .balance-section {
     padding: 10px 30px;
 }
@@ -70,7 +71,7 @@ body {
     font-weight: 700;
 }
 
-/* TARJETAS */
+/* Tarjetas */
 .cards-stack {
     position: relative;
     margin-top: 40px;
@@ -91,23 +92,9 @@ body {
     font-weight: 900;
 }
 
-.card-grey {
-    background-color: #cccccc;
-    top: 0;
-    color: #888;
-}
-
-.card-blue {
-    background-color: #0e043a;
-    top: 90px;
-    color: #5d568b;
-}
-
-.card-black {
-    background-color: #000000;
-    top: 180px;
-    color: #ffffff;
-}
+.card-grey { background-color: #cccccc; top: 0; color: #888; }
+.card-blue { background-color: #0e043a; top: 90px; color: #5d568b; }
+.card-black { background-color: #000000; top: 180px; color: #ffffff; }
 
 .drag-handle {
     width: 55px;
@@ -123,3 +110,63 @@ body {
     color: #888;
     font-size: 16px;
 }
+
+/* MODAL GLASSMORPHISM */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.85);
+    width: 85%;
+    max-width: 350px;
+    padding: 30px;
+    border-radius: 40px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.modal-content h3 { font-size: 24px; margin-bottom: 10px; font-weight: 800; }
+.modal-content p { font-size: 15px; margin-bottom: 25px; color: #222; line-height: 1.4; }
+
+.input-group {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 25px;
+    padding: 5px 15px;
+    margin-bottom: 30px;
+}
+
+.input-group input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 15px 5px;
+    outline: none;
+    font-size: 16px;
+    color: #333;
+}
+
+.input-group input:first-child { border-bottom: 1px solid rgba(0,0,0,0.05); }
+
+.modal-buttons { display: flex; gap: 12px; }
+
+.btn-cancel, .btn-continue {
+    flex: 1;
+    padding: 16px;
+    border-radius: 22px;
+    border: none;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.btn-cancel { background: rgba(0,0,0,0.1); color: #333; }
+.btn-continue { background: #007aff; color: white; }
