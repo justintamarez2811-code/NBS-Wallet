@@ -38,21 +38,24 @@ body {
 /* Saldo */
 .balance-section { padding: 10px 30px; }
 .balance-section p { font-size: 24px; font-weight: 800; color: #333; }
-/* Saldo con ajuste automático */
+/* Sección del Saldo - Ajuste de tamaño automático */
 .balance-section h1 {
-    /* Usamos vw (viewport width) para que el texto sea relativo al ancho de la pantalla */
-    font-size: 22vw; 
+    /* 20vw hace que el tamaño dependa del ancho de la pantalla del iPhone */
+    font-size: 20vw; 
     font-weight: 900;
     letter-spacing: -4px;
     margin: -5px 0 15px;
-    white-space: nowrap; /* Evita que el número se rompa en dos líneas */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%; /* No deja que se pase del borde del cel */
+    
+    /* Estas líneas son el truco para que no se salga nunca */
+    display: block;
+    width: 100%;
+    white-space: nowrap;      /* Mantiene el número en una sola línea */
+    overflow: hidden;         /* Corta lo que intente salirse */
+    text-overflow: clip;      /* Asegura que no se deforme el diseño */
 }
 
-/* Si el saldo es MUY grande, bajamos un poco más el tamaño en pantallas pequeñas */
-@media screen and (max-width: 380px) {
+/* Para pantallas muy pequeñas (como un iPhone SE o mini) */
+@media screen and (max-width: 375px) {
     .balance-section h1 {
         font-size: 18vw;
         letter-spacing: -2px;
