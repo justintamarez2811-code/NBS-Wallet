@@ -1,0 +1,134 @@
+/* Reset total */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    height: 100vh;
+    overflow: hidden; /* Evita scroll raro en el cel */
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Header */
+.user-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 60px 30px 20px;
+    gap: 12px;
+}
+
+.user-info span {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0d1b3e;
+}
+
+.user-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid #0d1b3e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Saldo */
+.balance-section {
+    padding: 20px 35px;
+}
+
+.balance-section p {
+    font-size: 24px;
+    font-weight: 800;
+    color: #333;
+}
+
+.balance-section h1 {
+    font-size: 95px;
+    font-weight: 900;
+    letter-spacing: -4px;
+    margin: -10px 0 15px;
+}
+
+.btn-recargar {
+    background-color: #0e053a;
+    color: #fff;
+    border: none;
+    padding: 14px 35px;
+    border-radius: 18px;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+/* Stack de Tarjetas */
+.cards-stack {
+    position: relative;
+    margin-top: 40px;
+    flex-grow: 1;
+}
+
+.card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 75px;
+    border-top-right-radius: 75px;
+    padding: 45px 40px;
+}
+
+.card-title {
+    font-size: 45px;
+    font-weight: 900;
+}
+
+/* Colores y Posiciones */
+.card-grey {
+    background-color: #cccccc;
+    top: 0;
+    color: #7a7a7a;
+}
+
+.card-blue {
+    background-color: #0e043a;
+    top: 100px;
+    color: #5d568b; /* Color del texto "Acciones" */
+}
+
+.card-black {
+    background-color: #000000;
+    top: 200px;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Handle y Historial */
+.drag-handle {
+    width: 55px;
+    height: 6px;
+    background-color: #333;
+    border-radius: 10px;
+    align-self: center;
+    margin-bottom: 30px;
+}
+
+.empty-state {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #999;
+    font-size: 16px;
+    margin-top: 100px;
+}
