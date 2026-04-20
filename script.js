@@ -1,47 +1,65 @@
-const modal = document.getElementById('login-modal');
-const userBtn = document.getElementById('user-btn');
-const displayLabel = document.getElementById('display-name');
+// Variables globales
+let currentBalance = parseFloat(localStorage.getItem('nb_balance')) || 0;
+let tempAmount = 0; // Lo que vas eligiendo en el menu de recarga
 
-// Abrir modal al dar click en el nombre/icono
-userBtn.onclick = () => {
-    modal.style.display = 'flex';
-};
+const mainBalanceDisplay = document.getElementById('main-balance');
+const tempAmountDisplay = document.getElementById('temp-amount');
 
-// Cerrar modal
-function closeModal() {
-    modal.style.display = 'none';
+// Actualizar la pantalla al inicio
+function init() {
+    updateBalanceUI();
+    updateUserUI();
 }
 
-// Guardar en memoria local (LocalStorage)
+// Lógica de Modales
+function openRecarga() {
+    tempAmount = 0;
+    tempAmountDisplay.innerText = `$${tempAmount}`;
+    document.getElementById('recarga-modal').style.display = 'flex';
+}
+
+function closeModal(id) {
+    document.getElementById(id).style.display = 'none';
+}
+
+// Lógica de Dinero
+function changeTempAmount(value) {
+    tempAmount += value;
+    // Evitar que el saldo total sea negativo (opcional)
+    tempAmountDisplay.innerText = `$${tempAmount}`;
+}
+
+function applyRecarga() {
+    currentBalance += tempAmount;
+    localStorage.setItem('nb_balance', currentBalance);
+    updateBalanceUI();
+    closeModal('recarga-modal');
+}
+
+function updateBalanceUI() {
+    // Formatear a moneda $0,00
+    mainBalanceDisplay.innerText = `$${currentBalance.toLocaleString('es-ES', {minimumFractionDigits: 2})}`;
+}
+
+// --- Lógica de Usuario (Lo que ya teniamos) ---
 function saveLogin() {
     const email = document.getElementById('email').value;
     if (email.trim() !== "") {
-        // Extraer nombre del correo (ej: jhon@gmail.com -> jhon)
         const name = email.split('@')[0];
         localStorage.setItem('nb_user_name', name);
-        updateUI();
-        closeModal();
-    } else {
-        alert("Pon un correo, loco.");
+        updateUserUI();
+        closeModal('login-modal');
     }
 }
 
-// Actualizar el nombre en la pantalla
-function updateUI() {
+function updateUserUI() {
     const savedName = localStorage.getItem('nb_user_name');
-    if (savedName) {
-        displayLabel.innerText = savedName;
-    } else {
-        displayLabel.innerText = "Inicia Sesión";
-    }
+    const displayLabel = document.getElementById('display-name');
+    if (savedName) displayLabel.innerText = savedName;
 }
 
-// Ejecutar al abrir la app
-window.onload = updateUI;
+document.getElementById('user-btn').onclick = () => {
+    document.getElementById('login-modal').style.display = 'flex';
+};
 
-// Cerrar modal si clican fuera del cuadro blanco
-window.onclick = function(event) {
-    if (event.target == modal) {
-        closeModal();
-    }
-}
+window.onload = init;

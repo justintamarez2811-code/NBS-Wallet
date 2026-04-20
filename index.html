@@ -21,25 +21,17 @@
 
         <section class="balance-section">
             <p>Tu saldo es de</p>
-            <h1>$0,00</h1>
-            <button class="btn-recargar">Recargar</button>
+            <h1 id="main-balance">$0,00</h1>
+            <button class="btn-recargar" onclick="openRecarga()">Recargar</button>
         </section>
 
         <div class="cards-stack">
-            <div class="card card-grey">
-                <h2 class="card-title">Datos</h2>
-            </div>
-
-            <div class="card card-blue">
-                <h2 class="card-title">Acciones</h2>
-            </div>
-
+            <div class="card card-grey"><h2 class="card-title">Datos</h2></div>
+            <div class="card card-blue"><h2 class="card-title">Acciones</h2></div>
             <div class="card card-black">
                 <div class="drag-handle"></div>
                 <h2 class="card-title">Historial</h2>
-                <div class="empty-state">
-                    <p>No hay registros todavía</p>
-                </div>
+                <div class="empty-state"><p>No hay registros todavía</p></div>
             </div>
         </div>
     </main>
@@ -47,16 +39,41 @@
     <div id="login-modal" class="modal-overlay">
         <div class="modal-content">
             <h3>Inicia Sesión</h3>
-            <p>Accede a la app para que puedas usar todas las funciones de la aplicación</p>
-            
+            <p>Accede a la app para que puedas usar todas las funciones</p>
             <div class="input-group">
                 <input type="email" id="email" placeholder="Correo Electrónico">
                 <input type="password" id="password" placeholder="Contraseña">
             </div>
+            <div class="modal-buttons">
+                <button class="btn-cancel" onclick="closeModal('login-modal')">Cancelar</button>
+                <button class="btn-continue" onclick="saveLogin()">Continuar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="recarga-modal" class="modal-overlay">
+        <div class="modal-content recarga-content">
+            <div class="visa-card">
+                <div class="visa-header">
+                    <span>NBS Wallet</span>
+                    <span class="visa-type">VISA</span>
+                </div>
+                <div class="visa-chip"></div>
+                <div class="visa-logo"></div>
+            </div>
+
+            <div class="amount-selector">
+                <h2 id="temp-amount">$0</h2>
+                <div class="stepper">
+                    <button onclick="changeTempAmount(-10)">—</button>
+                    <div class="divider"></div>
+                    <button onclick="changeTempAmount(10)">+</button>
+                </div>
+            </div>
 
             <div class="modal-buttons">
-                <button class="btn-cancel" onclick="closeModal()">Cancelar</button>
-                <button class="btn-continue" onclick="saveLogin()">Continuar</button>
+                <button class="btn-cancel" onclick="closeModal('recarga-modal')">Cancelar</button>
+                <button class="btn-continue btn-accept" onclick="applyRecarga()">Aceptar</button>
             </div>
         </div>
     </div>

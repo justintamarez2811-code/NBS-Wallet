@@ -1,172 +1,68 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+/* ... (Todo lo anterior se queda igual, añade esto al final) ... */
+
+/* Estilo para el modal de recarga específico */
+.recarga-content {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
 }
 
-body {
-    background-color: #ffffff;
-    height: 100vh;
-    overflow: hidden;
+/* La Tarjeta VISA del menu */
+.visa-card {
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(135deg, #e0e0e0, #ffffff);
+    border-radius: 20px;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+    text-align: left;
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
-.app-container {
+.visa-header { display: flex; justify-content: space-between; font-weight: 800; color: #bbb; font-size: 12px; }
+.visa-type { font-style: italic; font-size: 16px; color: #999; }
+
+.visa-chip {
+    width: 35px; height: 25px;
+    background: #d4af37; border-radius: 5px;
+    margin-top: 20px;
+}
+
+.visa-logo {
+    position: absolute;
+    bottom: 20px; right: 20px;
+    width: 40px; height: 25px;
+    background: linear-gradient(to right, #eb001b 50%, #f79e1b 50%);
+    border-radius: 15px;
+}
+
+/* Selector de dinero */
+.amount-selector h2 {
+    font-size: 45px;
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+
+.stepper {
     display: flex;
-    flex-direction: column;
-    height: 100vh;
-}
-
-/* Header */
-.user-header {
-    display: flex;
-    justify-content: flex-end;
+    background: rgba(0,0,0,0.05);
+    border-radius: 15px;
+    width: 120px;
+    margin: 0 auto 30px;
     align-items: center;
-    padding: 60px 25px 20px;
-    gap: 12px;
+}
+
+.stepper button {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 700;
     cursor: pointer;
 }
 
-.user-name {
-    font-size: 19px;
-    font-weight: 800;
-    color: #0d1b3e;
-}
+.stepper .divider { width: 1px; height: 20px; background: rgba(0,0,0,0.1); }
 
-.user-icon {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    border: 2.5px solid #0d1b3e;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Saldo */
-.balance-section {
-    padding: 10px 30px;
-}
-
-.balance-section p {
-    font-size: 24px;
-    font-weight: 800;
-    color: #333;
-}
-
-.balance-section h1 {
-    font-size: 95px;
-    font-weight: 900;
-    letter-spacing: -4px;
-    margin: -5px 0 15px;
-}
-
-.btn-recargar {
-    background-color: #0e053a;
-    color: #fff;
-    border: none;
-    padding: 14px 35px;
-    border-radius: 18px;
-    font-size: 17px;
-    font-weight: 700;
-}
-
-/* Tarjetas */
-.cards-stack {
-    position: relative;
-    margin-top: 40px;
-    flex-grow: 1;
-}
-
-.card {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-top-left-radius: 70px;
-    border-top-right-radius: 70px;
-    padding: 40px 35px;
-}
-
-.card-title {
-    font-size: 45px;
-    font-weight: 900;
-}
-
-.card-grey { background-color: #cccccc; top: 0; color: #888; }
-.card-blue { background-color: #0e043a; top: 90px; color: #5d568b; }
-.card-black { background-color: #000000; top: 180px; color: #ffffff; }
-
-.drag-handle {
-    width: 55px;
-    height: 6px;
-    background-color: #333;
-    border-radius: 10px;
-    margin: -10px auto 30px;
-}
-
-.empty-state {
-    margin-top: 120px;
-    text-align: center;
-    color: #888;
-    font-size: 16px;
-}
-
-/* MODAL GLASSMORPHISM */
-.modal-overlay {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    background: rgba(255, 255, 255, 0.85);
-    width: 85%;
-    max-width: 350px;
-    padding: 30px;
-    border-radius: 40px;
-    text-align: center;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-}
-
-.modal-content h3 { font-size: 24px; margin-bottom: 10px; font-weight: 800; }
-.modal-content p { font-size: 15px; margin-bottom: 25px; color: #222; line-height: 1.4; }
-
-.input-group {
-    background: rgba(0, 0, 0, 0.05);
-    border-radius: 25px;
-    padding: 5px 15px;
-    margin-bottom: 30px;
-}
-
-.input-group input {
-    width: 100%;
-    background: transparent;
-    border: none;
-    padding: 15px 5px;
-    outline: none;
-    font-size: 16px;
-    color: #333;
-}
-
-.input-group input:first-child { border-bottom: 1px solid rgba(0,0,0,0.05); }
-
-.modal-buttons { display: flex; gap: 12px; }
-
-.btn-cancel, .btn-continue {
-    flex: 1;
-    padding: 16px;
-    border-radius: 22px;
-    border: none;
-    font-weight: 700;
-    font-size: 16px;
-}
-
-.btn-cancel { background: rgba(0,0,0,0.1); color: #333; }
-.btn-continue { background: #007aff; color: white; }
+.btn-accept { background: #0061ff !important; }
