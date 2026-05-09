@@ -1,80 +1,101 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>NB Air</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="apple-touch-icon" href="icon.png">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-</head>
-<body>
-
-    <main class="app-container">
-        <header class="user-header" id="user-btn">
-            <span class="user-name" id="display-name">Inicia Sesion</span>
-            <div class="user-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d1b3e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-            </div>
-        </header>
-
-        <section class="balance-section">
-            <p>Tu saldo es de</p>
-            <h1 id="main-balance">$0,00</h1>
-            <button class="btn-recargar" onclick="openRecarga()">Recargar</button>
-        </section>
-
-        <div class="cards-stack">
-            <div class="card card-grey"><h2 class="card-title">Datos</h2></div>
-            <div class="card card-blue"><h2 class="card-title">Acciones</h2></div>
-            <div class="card card-black">
-                <div class="drag-handle"></div>
-                <h2 class="card-title">Historial</h2>
-                <div class="empty-state"><p>No hay registros todavia</p></div>
-            </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Node Cash</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="top-bar">
+        <button class="menu-button" aria-label="Abrir menú">
+          <span class="line line-1"></span>
+          <span class="line line-2"></span>
+          <span class="line line-3"></span>
+        </button>
+        <div class="top-actions">
+          <span class="login-text">Iniciar Sesión</span>
+          <button class="profile-button" aria-label="Perfil">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2" />
+              <circle cx="12" cy="9" r="3" fill="currentColor" />
+              <path d="M6 19c0-3.3 2.7-6 6-6s6 2.7 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </button>
         </div>
+      </header>
+
+      <section class="balance-panel">
+        <p class="balance-caption">Tu saldo es de</p>
+        <h1 class="balance-amount">$0,00</h1>
+        <div class="actions-row">
+          <button class="action-button" type="button" data-action="recargar">
+            <span class="action-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 7h14l-1.5 9.5H5" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <circle cx="9" cy="19" r="1.5" fill="white" />
+                <circle cx="17" cy="19" r="1.5" fill="white" />
+                <path d="M12 10v6M9 13h6" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </span>
+            <span>Recargar</span>
+          </button>
+          <button class="action-button" type="button" data-action="estado">
+            <span class="action-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="5" y="4" width="14" height="16" rx="3" ry="3" fill="none" stroke="white" stroke-width="2" />
+                <path d="M8 9h3M8 13h5M8 17h4" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" />
+                <path d="M15 9v-2l2 2" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </span>
+            <span>Estado de Cuenta</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="cards-stack">
+        <div class="card black-card">
+          <div class="black-card-content">
+            <div>
+              <h2>Datos</h2>
+              <p>Requiere Face ID</p>
+            </div>
+            <div class="lock-badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="6" y="11" width="12" height="9" rx="2" ry="2" fill="white" />
+                <path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="card green-card">
+          <div class="green-card-left">
+            <p>Nombre de Usuario</p>
+          </div>
+          <div class="green-card-right">
+            <strong>Node Cash</strong>
+            <span>Cuenta de Débito</span>
+          </div>
+        </div>
+
+        <div class="card transaction-card">
+          <div class="transaction-card-inner">
+            <h3>Transacciones</h3>
+            <p class="transaction-placeholder">Registrar pagos de PayPal</p>
+            <div class="transaction-list" id="transactionList" aria-label="Historial de transacciones"></div>
+          </div>
+        </div>
+      </section>
     </main>
-
-    <div id="login-modal" class="modal-overlay">
-        <div class="modal-content">
-            <h3>Inicia Sesión</h3>
-            <p>Accede a al app para que puedas usar todas las funciones de la aplicación</p>
-            <div class="input-group">
-                <input type="email" id="email" placeholder="Correo Electrónico">
-                <input type="password" id="password" placeholder="Contraseña">
-            </div>
-            <div class="modal-buttons">
-                <button class="btn-cancel" onclick="closeModal('login-modal')">Cancelar</button>
-                <button class="btn-continue" onclick="saveLogin()">Continuar</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="recarga-modal" class="modal-overlay">
-        <div class="modal-content">
-            <div class="visa-card">
-                <div class="visa-header">
-                    <span>NBS Wallet</span>
-                    <span class="visa-type">VISA</span>
-                </div>
-                <div class="visa-chip"></div>
-                <div class="visa-logo"></div>
-            </div>
-            <h2 id="temp-amount" class="amount-text">$0</h2>
-            <div class="stepper">
-                <button onclick="changeTempAmount(-10)">—</button>
-                <div class="divider"></div>
-                <button onclick="changeTempAmount(10)">+</button>
-            </div>
-            <div class="modal-buttons">
-                <button class="btn-cancel" onclick="closeModal('recarga-modal')">Cancelar</button>
-                <button class="btn-continue btn-accept" onclick="applyRecarga()">Aceptar</button>
-            </div>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-</body>
+    <div class="snackbar" id="snackbar" aria-live="polite"></div>
+    <script src="app.js" defer></script>
+  </body>
 </html>
